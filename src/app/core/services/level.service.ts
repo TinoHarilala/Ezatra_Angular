@@ -24,4 +24,17 @@ export default class LevelService {
         return this.http.post<Level>('http://localhost:5001/levels/getByPk', {id : id})
     }
 
+    //------- Delele -------//
+    delete(id : number) : Observable<any> {
+        return this.http.delete<any>('http://localhost:5001/levels/', {
+            body : {
+                id : id
+            }
+        } )
+    }
+
+    //--------- Update -------//
+    update(levelToUpdate : Level) : Observable<any> {
+        return this.http.patch<any>('http://localhost:5001/levels/', levelToUpdate)
+    }
 }

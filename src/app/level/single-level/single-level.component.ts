@@ -15,10 +15,12 @@ export class SingleLevelComponent implements OnInit {
 
   levelForm !: FormGroup
   isSelected$ !: Observable<Level>
+  idSelected !: number
 
   constructor(private dialog: MatDialog,
               private formBuilder : FormBuilder,
               private route : ActivatedRoute,
+              private navigate : Router,
               private levelService : LevelService
     ) { }
 
@@ -29,8 +31,8 @@ export class SingleLevelComponent implements OnInit {
       length : [null, Validators.required]
     })
 
-    const idSelected = +this.route.snapshot.params['id']
-    this.levelService.byPk(idSelected).subscribe(
+    this.idSelected = +this.route.snapshot.params['id']
+    this.levelService.byPk(this.idSelected).subscribe(
       {
         next : (value : any)=> {
           this.levelForm.patchValue({
@@ -49,11 +51,27 @@ export class SingleLevelComponent implements OnInit {
   }
 
   onUpdate = ()=>{
-
+     const levelToUpdata =  {
+      id : this.idSelected,
+      ...this.levelForm.value
+     }
+     this.levelService.update(levelToUpdata).subscribe(
+      {
+        next : ()=>this.navigate.navigateByUrl('/'),
+        error : (error)=> console.log(error)
+      }
+     )
   }
 
   onDelete = ()=>{
-
+    this.levelService.delete(this.idSelected).subscribe(
+      {
+        next : ()=> {
+          this.navigate.navigateByUrl("/")
+        },
+        error : (error)=> console.log(error)
+      }
+    )
   }
 
 }
