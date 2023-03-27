@@ -1,0 +1,27 @@
+.push-top {
+    position: absolute;
+    top: 50%; right: 50%;
+    transform: translate(50%,-50%);
+}
+.singleLevel {
+    position: relative;
+    padding: 40px;
+    width: 500px;
+    margin: auto;
+    border: 1px solid #d0d0d0;
+    box-shadow: 1px 4px 5px #d0d0d0;
+}
+.singleLevel .close  {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.singleLevel .dimension {
+    width: 400px;
+}
+.singleLevel .width-100 {
+    width: 100%;
+}
+.singleLevel .espace-right {
+    margin-right:  10px;
+}

@@ -1,0 +1,30 @@
+<div class="push-top">
+        <div class="singleLevel">
+        <form [formGroup]="levelForm">
+            <h1 mat-dialog-title> Modification</h1>
+            <div mat-dialog-content >
+                    <mat-form-field class="example-full-width dimension">
+                        <mat-label> Charactères </mat-label>
+                        <input matInput formControlName="characters" >
+                    </mat-form-field>
+
+                    <table class="example-full-width dimension" cellspacing="0"><tr>
+                        <td><mat-form-field class="example-full-width width-100">
+                            <mat-label>No. Exercice</mat-label>
+                            <input matInput formControlName="exercice">
+                        </mat-form-field></td>
+                        
+                        <td><mat-form-field class="example-full-width width-100 ">
+                            <mat-label> Longueur </mat-label>
+                            <input matInput formControlName="length">
+                        </mat-form-field></td>
+                    </tr>
+                    </table>
+            </div>
+            <div mat-dialog-actions>
+                <button mat-flat-button type="submit" [disabled]="levelForm.invalid" class="espace-right" (click)="onUpdate()" color="primary">MODIFIER</button>
+                <button mat-flat-button type="submit" [disabled]="levelForm.invalid"  (click)="onDelete()" color="warn">SUPPRIMER</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+
+<form [formGroup]="levelForm">
+    <h1 mat-dialog-title>Ajouter une nouvelle exercice</h1>
+    <div mat-dialog-content>
+            <mat-form-field class="example-full-width">
+                <mat-label> Charactères </mat-label>
+                <input matInput formControlName="characters">
+            </mat-form-field>
+
+            <table class="example-full-width" cellspacing="0"><tr>
+                <td><mat-form-field class="example-full-width">
+                    <mat-label>No. Exercice</mat-label>
+                    <input matInput formControlName="exercice">
+                </mat-form-field></td>
+                
+                <td><mat-form-field class="example-full-width">
+                    <mat-label> Longueur </mat-label>
+                    <input matInput formControlName="length">
+                </mat-form-field></td>
+            </tr>
+            </table>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-stroked-button type="submit" [disabled]="levelForm.invalid" (click)="onSubmitLevel()" color="primary">AJOUTER</button>
+        <button mat-stroked-button mat-dialog-close color="warn" (click)="closeDialog()" >ANNULER</button>
+    </div>
+</form>

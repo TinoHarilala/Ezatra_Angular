@@ -1,0 +1,44 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+.level-list {
+  padding: 40px;
+  padding-top: 80px;
+}  
+.table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.table-head button {
+  height: 40px;
+  background-color: #3f51b5;
+}
+th {
+  color: #3f51b5;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+td {
+  color: #606060;
+}
+.mat-paginator {
+  margin-top: 15px;
+}
+
+/*-- SELECTED ITEMS --*/
+
+.mat-row.hovered {
+  background: #eee;
+}
+
+.mat-row.highlighted {
+background: #999;
+}
