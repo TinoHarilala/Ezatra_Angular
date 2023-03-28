@@ -5,6 +5,7 @@ import LevelService from 'src/app/core/services/level.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import Level from 'src/app/core/models/level.model';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-single-level',
@@ -17,11 +18,15 @@ export class SingleLevelComponent implements OnInit {
   isSelected$ !: Observable<Level>
   idSelected !: number
 
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
   constructor(private dialog: MatDialog,
               private formBuilder : FormBuilder,
               private route : ActivatedRoute,
               private navigate : Router,
-              private levelService : LevelService
+              private levelService : LevelService,
+              private _snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
@@ -50,6 +55,13 @@ export class SingleLevelComponent implements OnInit {
     this.dialog.closeAll();
   }
 
+  openSnackBar(alert : string) {
+    this._snackBar.open(alert, 'Fermer', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
+  
   onUpdate = ()=>{
      const levelToUpdata =  {
       id : this.idSelected,
@@ -57,8 +69,11 @@ export class SingleLevelComponent implements OnInit {
      }
      this.levelService.update(levelToUpdata).subscribe(
       {
-        next : ()=>this.navigate.navigateByUrl('/'),
-        error : (error)=> console.log(error)
+        next : ()=>{
+                    this.navigate.navigateByUrl('/')
+                    this.openSnackBar('Modification effectuer avec succès !')
+        },
+        error : ()=> this.openSnackBar('Une erreur s\'est produite veuillez réessayer ultérieurement !')
       }
      )
   }
@@ -68,8 +83,9 @@ export class SingleLevelComponent implements OnInit {
       {
         next : ()=> {
           this.navigate.navigateByUrl("/")
+          this.openSnackBar('Suppression effectuer avec succès !')
         },
-        error : (error)=> console.log(error)
+        error : ()=> this.openSnackBar('Une erreur s\'est produite veuillez réessayer ultérieurement !')
       }
     )
   }

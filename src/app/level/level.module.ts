@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SingleLevelComponent } from './single-level/single-level.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -32,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatPaginatorModule,
     MatIconModule,
+    MatSnackBarModule
   ]
 })
 export class LevelModule { }

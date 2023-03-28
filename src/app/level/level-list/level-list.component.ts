@@ -36,9 +36,8 @@ export class LevelListComponent implements OnInit{
                             },
       error : (error : any)=> console.log(error) 
     })
-
-
   }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
