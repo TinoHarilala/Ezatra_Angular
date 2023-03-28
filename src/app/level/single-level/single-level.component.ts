@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import Level from 'src/app/core/models/level.model';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-single-level',
@@ -78,18 +79,13 @@ export class SingleLevelComponent implements OnInit {
      )
   }
 
-  onDelete = ()=>{
-    this.levelService.delete(this.idSelected).subscribe(
-      {
-        next : ()=> {
-          this.navigate.navigateByUrl("/")
-          this.openSnackBar('Suppression effectuer avec succès !')
-        },
-        error : ()=> this.openSnackBar('Une erreur s\'est produite veuillez réessayer ultérieurement !')
-      }
-    )
-  }
 
+  //------- Confirm dialog ------//
+  openDialog(): void {
+     this.dialog.open(ConfirmDialogComponent, {
+      data : this.idSelected 
+    });
+  }
 }
 
 

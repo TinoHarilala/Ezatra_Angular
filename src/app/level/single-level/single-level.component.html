@@ -23,7 +23,7 @@
             </div>
             <div mat-dialog-actions>
                 <button mat-flat-button type="submit" [disabled]="levelForm.invalid" class="espace-right" (click)="onUpdate()" color="primary">MODIFIER</button>
-                <button mat-flat-button type="submit" [disabled]="levelForm.invalid"  (click)="onDelete()" color="warn">SUPPRIMER</button>
+                <button mat-flat-button type="submit" [disabled]="levelForm.invalid"  (click)="openDialog()" color="warn">SUPPRIMER</button>
             </div>
         </form>
     </div>
